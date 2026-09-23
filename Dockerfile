@@ -9,14 +9,14 @@ RUN npm run build
 # Stage 2: PHP & Application Setup
 FROM php:8.3-fpm
 
-# Install system dependencies and PostgreSQL PHP extension
+# Install system dependencies and ONLY pdo_pgsql (pdo is built-in)
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     zip \
     unzip \
     git \
     curl \
-    && docker-php-ext-install pdo pdo_pgsql \
+    && docker-php-ext-install pdo_pgsql \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
