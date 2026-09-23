@@ -7,9 +7,9 @@ COPY . .
 RUN npm run build
 
 # Stage 2: PHP & Application Setup
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 
-# Install system dependencies and ONLY pdo_pgsql (pdo is built-in)
+# Install system dependencies and pdo_pgsql
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     zip \
